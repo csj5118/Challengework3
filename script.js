@@ -14,8 +14,24 @@ var specialchar;
 
 function PasswordLength() {
   PasswordLength = prompt('Please tell us how long you wish your password to be. Must be greater than 8 and less than 128');
-  return parseInt(PasswordLengthString, 10);
+  if (PasswordLength<8){
+    alert("Password let password length be greater than 8 Characters");
+  } else if (PasswordLength>128){
+    alert("Let password length be shorter than 128 Characters");
+  }
+  PasswordLength();
 }
+
+var validate = (PasswordLength) => {
+  if (PasswordLength){
+    alert("Password length must be a number");
+    return false;
+  } else {
+    if (PasswordLength >= 8 && PasswordLength <= 128){
+      return true;
+    }
+  }
+};
 
 function generatePassword() {
   var password = "";
