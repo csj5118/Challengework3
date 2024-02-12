@@ -1,47 +1,15 @@
+var lowercase = ['a', 'b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+var uppercase = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+var specialCharacters = ['!','@','#','$','%','^','&','*','(',')','~','<','>','"','[','{',']','}','|'];
+var numbers = ['1','2','3','4','5','6','7','8','9','0'];
+var LengthPrompt = 8;
+var choice = [];
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
-var Lower = 'abcdefghijklmnopqrstuvwxyz0123456789';
-var Upper = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-var num = '0123456789';
-var Special = '!"#$%&()*+,-./:;<=>?@[\]^_{|}~';
-var passwordLength;
-var uppercase;
-var lowercase;
-var specialchar;
 
 
+generateBtn.addEventListener("click", writePassword);
 
-
-function PasswordLength() {
-  PasswordLength = prompt('Please tell us how long you wish your password to be. Must be greater than 8 and less than 128');
-  if (PasswordLength<8){
-    alert("Password let password length be greater than 8 Characters");
-  } else if (PasswordLength>128){
-    alert("Let password length be shorter than 128 Characters");
-  }
-  PasswordLength();
-}
-
-var validate = (PasswordLength) => {
-  if (PasswordLength){
-    alert("Password length must be a number");
-    return false;
-  } else {
-    if (PasswordLength >= 8 && PasswordLength <= 128){
-      return true;
-    }
-  }
-};
-
-function generatePassword() {
-  var password = "";
-  // add code to change passqword variable.
-
-  // window.prompt
-  // window.confirm
-
-  return password; // return generated password
-}
 
 // Write password to the #password input
 function writePassword() {
@@ -51,5 +19,34 @@ function writePassword() {
   passwordText.value = password;
 }
 
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+function generatePassword(){
+
+}
+
+  
+function getPrompt(){
+  LengthPrompt = parseInt(prompt("Please choose a number between 8 and 128 characters to generate your password"));
+
+  if(isNaN(LengthPrompt) || LengthPrompt < 8 || LengthPrompt > 128) {
+    alert('invalid input');
+    return false;
+  }
+
+  if (confirm("Would you like lowercase")){
+    choice = choice.concat(lowercase);
+  }
+  if (confirm("Would you like uppercase")){
+    choice = choice.concat(uppercase);
+  }
+  if (confirm("Would you like numbers")){
+    choice = choice.concat(numbers);
+  }
+  if (confirm("Would you like special Characters")){
+    choice = choice.concat(specialCharacters);
+  }
+  return true;
+
+
+}
+
+
